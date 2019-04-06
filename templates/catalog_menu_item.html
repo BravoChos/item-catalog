@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "flash_alert.html" %}
+<div class="row col-md-8 col-md-offset-2">
+	 <div class="card detail-card item-info-card">
+<!-- <img class="img-thumbnail pull-left" src="http://placehold.it/150" alt="image placeholder" /> -->
+		<div class="row">
+			<div class="col-md-6">
+				<h2>{{item.name}}<br><small>({{ item.category.name }})</small></h2>
+			</div>
+			<div class="col-md-6 text-right">
+					<h2> Class: {{ item.rank }}</h2>	
+			</div>
+		</div>
+		<hr>
+		<div class="row item-description">
+			<p style="margin-left: 10px" >
+				&nbsp&nbsp&nbsp&nbsp{{ item.description }}
+			</p>
+			<div class="row">
+				<div class="col-md-9">
+					<h3 style="margin-left: 20px; margin-top: 20px">Hero : {{ item.hero }}</h3>
+				</div>
+				{% if item.user_id == session.user_id %}
+				<div class="col-md-3 editdeletepane" style="margin-top:14px">
+					<a href="{{ url_for('editCatalogItem', category_id=item.category_id, catalog_item_id=item.id) }}">
+						<button class="btn btn-default edit" >
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 
+								Edit
+						</button>
+					</a>
+					<a href="{{ url_for('deleteCatalogItem', category_id=item.category_id, catalog_item_id=item.id) }}">
+						<button class="btn btn-danger delete">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+								Delete
+						</button>
+					</a>
+				</div>
+			</div>
+
+		    {% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
