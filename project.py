@@ -70,16 +70,17 @@ def categoriesJSON():
 def showCatalog():
     """Returns catalog page with all categories and recently added items"""
     categories = session.query(Category).all()
+    catelogs = len(categories)
     items = session.query(CatalogItem).order_by(CatalogItem.id.desc())
     quantity = items.count()
     if 'username' not in login_session:
         return render_template(
             'public_catalog.html',
-            categories=categories, items=items, quantity=quantity)
+            categories=categories, items=items, quantity=quantity, catelogs=catelogs)
     else:
         return render_template(
             'catalog.html',
-            categories=categories, items=items, quantity=quantity)
+            categories=categories, items=items, quantity=quantity, catelogs=catelogs)
 
 
 # CREATE - New category

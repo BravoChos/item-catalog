@@ -14,7 +14,11 @@
     </div>
   </div>
   <ul class="list-group" style="margin-top: 10px">
+    {% if catelogs == 0 %}
+      <li class="list-group-item">You currently have no Movie lists.</li> 
+    {% endif %}
     {% for c in categories %}
+
       <li class="list-group-item">
         <div class="row">
           <div class="col-md-12">
