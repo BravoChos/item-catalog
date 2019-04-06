@@ -89,7 +89,7 @@ def showCatalog():
 def newCategory():
     """Allows user to create new category"""
     if request.method == 'POST':
-        print login_session
+        # print login_session
         if 'user_id' not in login_session and 'email' in login_session:
             login_session['user_id'] = getUserID(login_session['email'])
         newCategory = Category(
@@ -215,9 +215,6 @@ def editCatalogItem(category_id, catalog_item_id):
     if editedItem.user_id != login_session['user_id']:
         return "<script>function myFunction() {alert('You are not authorized!')}</script><body onload='myFunction()'>"  # noqa
     if request.method == 'POST':
-        print("welcome to edit port")
-        print(editedItem.category)
-        print(request.form['category'])
         if request.form['name']:
             editedItem.name = request.form['name']
         if request.form['description']:
@@ -228,7 +225,6 @@ def editCatalogItem(category_id, catalog_item_id):
             editedItem.category_id = request.form['category']
         if request.form['rank']:
             editedItem.rank = request.form['rank']
-        print('before sdfsdfsdfsdfsdfsdfslkdfjslkdjflskjdflksjdfklsjdfklsjdlfkjsldkfjslkdjflskdjf   add')
         session.add(editedItem)
         session.commit()
         flash("Catalog item updated!", 'success')
@@ -284,7 +280,7 @@ def fbconnect():
         response.headers['Content-Type'] = 'application/json'
         return response
     access_token = request.data
-    print "access token received %s " % access_token
+    # print "access token received %s " % access_token
 
     app_id = json.loads(open('fb_client_secrets.json', 'r').read())[
         'web']['app_id']
@@ -381,7 +377,7 @@ def createUser(login_session):
 # Disconnect based on provider
 @app.route('/disconnect')
 def disconnect():
-    print login_session
+    # print login_session
     if 'provider' in login_session:
         if login_session['provider'] == 'facebook':
             fbdisconnect()
