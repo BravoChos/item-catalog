@@ -75,12 +75,12 @@ def showCatalog():
     quantity = items.count()
     if 'username' not in login_session:
         return render_template(
-            'public_catalog.html',
-            categories=categories, items=items, quantity=quantity, catelogs=catelogs)
+            'public_catalog.html', categories=categories, items=items,
+            quantity=quantity, catelogs=catelogs)
     else:
         return render_template(
-            'catalog.html',
-            categories=categories, items=items, quantity=quantity, catelogs=catelogs)
+            'catalog.html', categories=categories, items=items,
+            quantity=quantity, catelogs=catelogs)
 
 
 # CREATE - New category
@@ -193,8 +193,7 @@ def newCatalogItem():
             hero=request.form['hero'],
             category_id=request.form['category'],
             user_id=login_session['user_id'],
-            rank= request.form['rank']
-            )
+            rank=request.form['rank'])
         session.add(addNewItem)
         session.commit()
         flash("New catalog item created!", 'success')
@@ -346,15 +345,12 @@ def fbdisconnect():
     return "you have been logged out"
 
 
-
-
-
 # User helper functions
 def getUserID(email):
     try:
         user = session.query(User).filter_by(email=email).one()
         return user.id
-    except:
+    except Exception:
         return None
 
 
