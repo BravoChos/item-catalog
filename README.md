@@ -2,9 +2,8 @@
 Udacity Full Stack Nanodegree Project 4
 
 ## About:
--------
 
-    In this Item Catalog project, you will build a RESTful web application that displays all the avenger movie catalog along with the movie character list and the homepage implements a third-party authentication & authorization service (in our case Facebook accounts). Only Authorized user can perform Create, Read, Update, and Delete operations, whereas unauthorized user can read the contents.
+In this Item Catalog project, you will build a RESTful web application that displays all the avenger movie catalog along with the movie character list and the homepage implements a third-party authentication & authorization service (in our case Facebook accounts). Only Authorized user can perform Create, Read, Update, and Delete operations, whereas unauthorized user can read the contents.
 
 ## Setting up the Environment
 1. Download and Install python3 ver 3.6.7 (https://www.python.org/downloads/)
